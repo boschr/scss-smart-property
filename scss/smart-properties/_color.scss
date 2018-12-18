@@ -1,0 +1,10 @@
+@function color($values) {
+  $color: nth($values, 1);
+  @if (map-has-key($map-color, $color)) {
+    $variant: if(length($values) > 1, nth($values, 2), base);
+    $colorMap: map-get($map-color, $color);
+    $color: map-get($colorMap, $variant);
+  }
+
+  @return $color;
+}

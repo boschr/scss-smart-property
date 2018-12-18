@@ -1,0 +1,11 @@
+@function font-size($value) {
+  @if (map-has-key($map-font-size, $value)) {
+    $value: map-get($map-font-size, $value);
+  }
+
+  @if (ends-with(inspect($value), px)) {
+    $value: rem($value);
+  }
+
+  @return $value;
+}

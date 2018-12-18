@@ -1,0 +1,36 @@
+$base-font-size: 16px;
+$map-font-size: (
+  small: 13px,
+  base: 16px,
+  large: 20px,
+);
+
+$map-color: (
+  blue: (
+    base: #00f,
+    light: #fff,
+  ),
+  red: (
+    base: #f00,
+  ),
+);
+
+@import 'helpers/strip-unit';
+@import 'helpers/ends-width';
+@import 'helpers/rem';
+
+@import 'smart-properties/background-color';
+@import 'smart-properties/color';
+@import 'smart-properties/font-size';
+
+@mixin smartp($map-properties) {
+  & {
+    @each $prop, $value in $map-properties {
+      @if function-exists($prop) {
+        #{$prop}: call($prop, $value);
+      } @else {
+        #{$prop}: $value;
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+@function background-color($value) {
+  @return color($value);
+}

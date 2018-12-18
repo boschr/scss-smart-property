@@ -1,0 +1,10 @@
+@function rem($px, $base-val: $base-font-size) {
+  @if not unitless($px) {
+    $px: strip-unit($px);
+  }
+  @if not unitless($base-val) {
+    $base-val: strip-unit($base-val);
+  }
+
+  @return ($px / $base-val) * 1rem;
+}
